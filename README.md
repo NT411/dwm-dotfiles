@@ -91,7 +91,7 @@ flowchart TD
 Replace the URL with your actual repository URL.
 
 ```bash
-git clone https://github.com/USERNAME/REPOSITORY.git ~/dwm-dotfiles
+git clone https://github.com/NT411/dwm-dotfiles
 ```
 
 #### 2. Enter the repository
