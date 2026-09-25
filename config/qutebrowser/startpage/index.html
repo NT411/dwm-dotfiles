@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>startpage</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="shell">
+  <div class="wallpaper" aria-hidden="true"></div>
+
+  <div class="main">
+    <div class="clock-block">
+      <div class="clock" id="clock">00:00</div>
+      <div class="date" id="date">—</div>
+    </div>
+  </div>
+
+  <div class="sidebar">
+    <div class="s-links">
+      <div class="s-group">
+        <div class="s-label">Bookmarks</div>
+        <div id="bookmarks" aria-live="polite"></div>
+        <p class="bookmark-status" id="bookmark-status">Loading bookmarks…</p>
+      </div>
+    </div>
+
+    <div class="s-search">
+      <div class="search-wrap">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
+        <input class="search-input" id="search" type="text" aria-label="Search or enter address" placeholder="Search or enter address" autocomplete="off" autofocus />
+      </div>
+    </div>
+  </div>
+
+</div>
+<script src="script.js"></script>
+</body>
+</html>

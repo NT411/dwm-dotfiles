@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-scale "$HOME/Images/Wallpapers/wp2.png"

@@ -1,0 +1,57 @@
+# Python bytecode, local environments, and tool caches
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Compiled suckless programs (keep custom config.h files)
+*.o
+/config/dwm/dwm
+/config/dmenu/dmenu
+/config/dmenu/stest
+/config/st/st
+/config/st/scroll/scroll
+/config/st/scroll/ptty
+/config/slstatus/slstatus
+/config/slock/slock
+
+# Archives created by make dist
+/config/dwm/dwm-*.tar.gz
+/config/dmenu/dmenu-*.tar.gz
+/config/st/st-*.tar.gz
+/config/st/scroll/scroll-*.tar.gz
+/config/slstatus/slstatus-*.tar.gz
+/config/slock/slock-*.tar.gz
+
+# Logs and installer backups
+*.log
+.RiceBackup/
+
+# Local application state and credentials
+/config/gh/hosts.yml
+/config/deskctl/session-state.json
+/config/qutebrowser/autoconfig.yml
+/config/qutebrowser/config.py.before-*
+/config/qutebrowser/sessions/
+/config/micro/backups/
+/config/micro/buffers/
+/config/micro/log.txt
+/config/mc/history
+/home/.bash_history
+/home/.lesshst
+/home/.Xauthority
+
+# Editor temporary files and OS metadata
+*.swp
+*.swo
+*~
+.DS_Store
+._*
+Thumbs.db
+Desktop.ini

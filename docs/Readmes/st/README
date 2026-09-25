@@ -1,0 +1,56 @@
+st - simple terminal
+--------------------
+st is a simple terminal emulator for X which sucks less.
+
+Local desktop setup
+-------------------
+The [repository installer](../installer/README.md) builds ST, deploys its
+source and binary to ~/.config/st, links st into ~/.local/bin, and installs
+its terminfo in ~/.terminfo. Press Super + Enter in DWM to open it.
+
+Edit ~/.config/st/config.h to change the font, colors, or shortcuts, then run:
+
+    make -C ~/.config/st
+
+Open a new terminal to use the rebuilt binary. The configured font is
+JetBrainsMono Nerd Font. Shift + Page Up / Page Down scrolls terminal history.
+The external scroll helper is built by the installer but is disabled in ST's
+default configuration; this fork provides its own scrollback.
+
+The standalone installation instructions below are an upstream reference.
+They install to /usr/local instead of updating the installer-managed binary.
+
+
+Requirements
+------------
+This build requires a C compiler, Make, pkg-config, and development headers
+and libraries for Xlib, Xft, Fontconfig, and FreeType. The tic utility from
+ncurses compiles its terminfo.
+
+
+Installation
+------------
+Edit config.mk to match your local setup (st is installed into
+the /usr/local namespace by default).
+
+Afterwards enter the following command to build and install st (if
+necessary as root):
+
+    make clean install
+
+
+Running st
+----------
+For a standalone build without make clean install or the repository installer,
+compile the st terminfo entry from the ST source directory:
+
+    tic -sx st.info
+
+See the man page for additional details.
+
+Credits
+-------
+Based on Aurélien APTEL <aurelien dot aptel at gmail dot com> bt source code.
+
+
+[Documentation index](../../../README.md#documentation)

@@ -1,0 +1,31 @@
+slock - simple screen locker
+============================
+
+Upstream usage reference, with build requirements adapted for this fork.
+For this desktop’s installation, startup, and rebuild workflow, see
+[the local setup guide](README.md). The standalone instructions below
+do not replace the repository installer or its session launcher.
+simple screen locker utility for X.
+
+
+Requirements
+------------
+This build requires a C compiler, Make, and development headers and libraries for Xlib, Xext, Xrandr, and libcrypt.
+
+
+Installation
+------------
+Edit config.mk to match your local setup (slock is installed into
+the /usr/local namespace by default).
+
+Afterwards enter the following command to build and install slock
+(if necessary as root):
+
+    make clean install
+
+
+Running slock
+-------------
+Simply invoke the 'slock' command. To get out of it, enter your password.
+
+[Documentation index](../../../README.md#documentation)

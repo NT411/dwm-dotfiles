@@ -1,0 +1,5 @@
+#!/bin/sh
+# Build, back up, and install the bundled DWM desktop.
+set -eu
+repo_dir=$(CDPATH='' cd -- "$(dirname -- "$0")" && pwd)
+exec python3 "$repo_dir/installer/install.py" "$@"
