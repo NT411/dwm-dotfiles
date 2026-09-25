@@ -103,7 +103,7 @@ cd ~/dwm-dotfiles
 #### 3. Make the installer executable
 
 ```bash
-chmod +x RiceInstaller
+chmod +x ./RiceInstaller
 ```
 
 #### 4. Run the installer
