@@ -10,12 +10,11 @@ static       int smartgaps          = 0;        /* keep outer gaps even when the
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=13" };
-static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=13";
 static const char col_gray1[]       = "#1e1e2e";
 static const char col_gray2[]       = "#45475a";
 static const char col_gray3[]       = "#cdd6f4";
 static const char col_gray4[]       = "#11111b";
-static const char col_cyan[]        = "#ffffff"; 
+static const char col_cyan[]        = "#ffffff";
 /* pink: #cba6f7 */
 /* blue: #00ffff*/
 
@@ -42,7 +41,6 @@ static const Rule rules[] = {
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizing */
-static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"

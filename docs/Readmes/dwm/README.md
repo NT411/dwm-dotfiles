@@ -13,6 +13,8 @@ scroll up to go back. All five layouts support the configured gaps.
 - [config.mk](../../../config/dwm/config.mk): compiler flags, libraries, and installation paths.
 - [start-dwm.sh](../../../config/dwm/start-dwm.sh): restores desktop settings and wallpaper, starts Slstatus and Picom, then launches DWM. Set `DWM_COMPOSITOR=0` to skip starting Picom.
 
+Keep `config.def.h` synchronized with `config.h`; the build copies it when `config.h` is missing.
+
 The configured font is JetBrainsMono Nerd Font. Build dependencies include a C compiler, Make, Xlib, Xinerama, Xft, and Fontconfig.
 
 ## Usage

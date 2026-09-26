@@ -6,16 +6,18 @@ static const unsigned int gappih = 10;
 static const unsigned int gappiv = 10;
 static const unsigned int gappoh = 16;
 static const unsigned int gappov = 16;
-static       int smartgaps          = 0;        /* 1 means no outer gap when there is only one window */
+static       int smartgaps          = 0;        /* keep outer gaps even when there is only one window */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "JetBrainsMono Nerd Font:size=13" };
-static const char dmenufont[]       = "JetBrainsMono Nerd Font:size=13";
 static const char col_gray1[]       = "#1e1e2e";
 static const char col_gray2[]       = "#45475a";
 static const char col_gray3[]       = "#cdd6f4";
 static const char col_gray4[]       = "#11111b";
-static const char col_cyan[]        = "#00FFFF";
+static const char col_cyan[]        = "#ffffff";
+/* pink: #cba6f7 */
+/* blue: #00ffff*/
+
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -23,7 +25,7 @@ static const char *colors[][3]      = {
 };
 
 /* tagging */
-static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+static const char *tags[] = { "1", "2", "3", "4", "5" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -32,15 +34,13 @@ static const Rule rules[] = {
 	 */
 	/* class      instance    title       tags mask     monitor */
 	{ "Gimp",     NULL,       NULL,       0,            -1 },
-	{ "Firefox",  NULL,       NULL,       1 << 8,            -1 },
 };
 
 /* layout(s) */
 
 static const float mfact     = 0.55; /* factor of master area size [0.05..0.95] */
 static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 1;    /* 1 means respect size hints in tiled resizing */
-static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+static const int resizehints = 0;    /* 1 means respect size hints in tiled resizing */
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
@@ -72,8 +72,12 @@ static const char *dmenucmd[] = {
 	"dmenu-launcher.sh", dmenumon, NULL
 };
 static const char *termcmd[]  = { "st", NULL };
+static const char *nvimcmd[] = { "st", "-e", "nvim", NULL };
+static const char *mccmd[] = { "st", "-e", "mc", NULL };
+static const char *htopcmd[] = { "st", "-e", "htop", NULL };
+static const char *deskctlcmd[] = { "st", "-e", "/bin/sh", "-c", "exec \"$HOME/.config/scripts/deskctl.py\"", NULL };
 static const char *slockcmd[] = { "slock", NULL };
-
+static const char *screenshotcmd[] = {"/bin/sh", "-c","mkdir -p \"$HOME/Images\" && ""gpu-screen-recorder -w screen " "-cursor no " "-o \"$HOME/Images/screenshot-$(date +%Y-%m-%d_%H-%M-%S-%N).jpg\"",NULL};
 static const Key keys[] = {
 	/* Audio keys follow the default PipeWire output/input. */
 	{ 0, XF86XK_AudioRaiseVolume, spawn, SHCMD("wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 5%+ && pkill -USR1 -u \"$(id -u)\" -x slstatus") },
@@ -82,8 +86,13 @@ static const Key keys[] = {
 	{ 0, XF86XK_AudioMicMute, spawn, SHCMD("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle") },
 
 	/* apps */
+	{ MODKEY,                       XK_m,            spawn,          {.v = mccmd    } },
+	{ MODKEY,                       XK_h,            spawn,          {.v = htopcmd  } },
 	{ MODKEY,                       XK_p,            spawn,          {.v = dmenucmd } },
-	{ MODKEY,                       XK_Return,       spawn,          {.v = termcmd } },
+	{ MODKEY,                       XK_d,            spawn,          {.v = deskctlcmd } },
+	{ MODKEY,                       XK_Return,       spawn,          {.v = termcmd  } },
+	{ MODKEY,                       XK_v,            spawn,          {.v = nvimcmd } },
+	{ MODKEY,                       XK_s,            spawn,          {.v = screenshotcmd } },
 	{ MODKEY,                       XK_b,            spawn,          SHCMD("qutebrowser") },
 
 	/* focus */
