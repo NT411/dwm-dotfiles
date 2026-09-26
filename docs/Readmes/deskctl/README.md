@@ -27,6 +27,12 @@ Applying settings writes to the installed configuration under `~/.config` and re
 - [display-brightness](../../../config/deskctl/display-brightness): saved screen dimming value.
 - `~/.fehbg`: wallpaper restoration script.
 
+Brightness changes target active monitors only. Session saves preserve monitor
+positions and exact rotation, including left rotation and vertically arranged
+screens. Explicitly changing monitor order or orientation still arranges them
+in a horizontal row. Older saves without exact geometry are skipped for monitor
+restoration; apply settings once to save the current arrangement.
+
 The [DWM session launcher](../../../config/dwm/start-dwm.sh) invokes `deskctl.py --restore-session`, restores wallpaper, and applies saved brightness before starting DWM. Changes affect the installed files; they do not automatically update this repository.
 
 [Back to documentation](../../../README.md#documentation)

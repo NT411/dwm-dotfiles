@@ -152,6 +152,7 @@ Suckless programs such as `dwm`, `dmenu`, `st`, `slock`, and `slstatus` are buil
 | `base-devel` | Build tools | Arch Linux |
 | `git` | Version control | Arch Linux |
 | `neovim` | Text editor | Arch Linux |
+| `ruff` | Python linter and formatter | Arch Linux |
 | `nodejs` | JavaScript runtime | Arch Linux |
 | `npm` | Node package manager | Arch Linux |
 | `lazygit` | Git interface | Arch Linux |

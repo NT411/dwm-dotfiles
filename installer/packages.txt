@@ -38,6 +38,7 @@ qutebrowser
 python-adblock
 pdfjs
 neovim
+ruff
 ripgrep
 fd
 fzf

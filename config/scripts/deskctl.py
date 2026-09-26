@@ -418,17 +418,6 @@ def display_brightness():
     return value if value in BRIGHTNESS_VALUES else "1.0"
 
 
-def connected_outputs():
-    code, out = run(["xrandr", "--query"])
-    if code != 0:
-        raise RuntimeError(out or "xrandr failed")
-    return [
-        line.split()[0]
-        for line in out.splitlines()
-        if re.match(r"^\S+\s+connected(?:\s|$)", line)
-    ]
-
-
 def connected_monitors():
     """Return active monitors in physical left-to-right order."""
     code, out = run(["xrandr", "--query"])
@@ -463,6 +452,7 @@ def connected_monitors():
             "base_width": height if portrait else width,
             "base_height": width if portrait else height,
             "orientation": "portrait" if portrait else "landscape",
+            "rotation": rotation,
         })
     monitors.sort(key=lambda monitor: (monitor["x"], monitor["y"], monitor["output"]))
     return monitors
@@ -472,9 +462,9 @@ def set_display_brightness(value):
     if not command_exists("xrandr"):
         raise RuntimeError("xrandr is not installed")
 
-    outputs = connected_outputs()
+    outputs = [monitor["output"] for monitor in connected_monitors()]
     if not outputs:
-        raise RuntimeError("no connected xrandr outputs found")
+        raise RuntimeError("no active xrandr outputs found")
 
     for output in outputs:
         code, out = run(["xrandr", "--output", output, "--brightness", value])
@@ -619,6 +609,7 @@ def apply_monitor_layout(monitors):
     for monitor in monitors:
         monitor["x"] = monitor.pop("pending_x")
         monitor["y"] = 0
+        monitor["rotation"] = "right" if monitor["orientation"] == "portrait" else "normal"
         monitor["width"] = monitor.pop("pending_width")
         monitor["height"] = monitor.pop("pending_height")
     return "monitor layout applied"
@@ -633,6 +624,9 @@ def save_session_state(state):
             {
                 "output": monitor["output"],
                 "orientation": monitor["orientation"],
+                "x": monitor["x"],
+                "y": monitor["y"],
+                "rotation": monitor["rotation"],
             }
             for monitor in state["monitors"]
         ],
@@ -672,21 +666,25 @@ def restore_session_state():
 
     if not saved.get("monitors") or not command_exists("xrandr"):
         return
-    current = connected_monitors()
-    by_output = {monitor["output"]: monitor for monitor in current}
-    restored = []
-    for item in saved.get("monitors", []):
-        monitor = by_output.pop(item.get("output"), None)
-        if monitor is None:
-            continue
-        if item.get("orientation") in ("landscape", "portrait"):
-            monitor["orientation"] = item["orientation"]
-        restored.append(monitor)
-    if not restored:
+    # Old saves lack exact geometry; leave the current arrangement untouched.
+    if any(type(item.get("x")) is not int or type(item.get("y")) is not int or
+           item.get("rotation") not in ("normal", "left", "right", "inverted")
+           for item in monitors):
+        print("Skipping saved monitor layout without valid positions/rotations; "
+              "apply settings once to save the current layout.", file=sys.stderr)
         return
-    restored.extend(monitor for monitor in current if monitor["output"] in by_output)
-    if restored:
-        apply_monitor_layout(restored)
+    active = {monitor["output"] for monitor in connected_monitors()}
+    command = ["xrandr"]
+    for item in monitors:
+        if item["output"] in active:
+            command.extend([
+                "--output", item["output"], "--rotate", item["rotation"],
+                "--pos", f"{item['x']}x{item['y']}",
+            ])
+    if len(command) > 1:
+        code, output = run(command)
+        if code != 0:
+            raise RuntimeError(output or "failed to restore monitor layout")
 
 
 def apply_settings(state):
