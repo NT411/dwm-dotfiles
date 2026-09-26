@@ -58,7 +58,6 @@ set -- $(dwm_bar_geometry)
 
 if [ "$#" -eq 4 ]; then
     exec dmenu_run \
-        -m "$mon" \
         -x "$1" -y "$2" \
         -z "$3" -h "$4" \
         -fn 'JetBrainsMono Nerd Font:size=12' \
@@ -72,7 +71,6 @@ mon_w="${3:-}"
 [ -n "$mon_w" ] || mon_w=$(xdpyinfo | awk '/dimensions:/ {split($2, a, "x"); print a[1]; exit}')
 
 exec dmenu_run \
-    -m "$mon" \
     -x 10 -y 10 \
     -z "$((mon_w - 20))" \
     -fn 'JetBrainsMono Nerd Font:size=12' \
