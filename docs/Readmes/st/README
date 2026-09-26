@@ -13,7 +13,7 @@ Edit ~/.config/st/config.h to change the font, colors, or shortcuts, then run:
     make -C ~/.config/st
 
 Open a new terminal to use the rebuilt binary. The configured font is
-JetBrainsMono Nerd Font. Shift + Page Up / Page Down scrolls terminal history.
+JetBrainsMono Nerd Font. Shift + Up / Down scrolls terminal history one page at a time.
 The external scroll helper is built by the installer but is disabled in ST's
 default configuration; this fork provides its own scrollback.
 
