@@ -27,6 +27,7 @@ feh
 procps-ng
 pacman-contrib
 ttf-jetbrains-mono-nerd
+ttf-ubuntu-mono-nerd
 noto-fonts
 noto-fonts-emoji
 adwaita-icon-theme

@@ -192,6 +192,7 @@ Suckless programs such as `dwm`, `dmenu`, `st`, `slock`, and `slstatus` are buil
 | `procps-ng` | Process tools | Arch Linux |
 | `pacman-contrib` | Pacman utilities | Arch Linux |
 | `ttf-jetbrains-mono-nerd` | Nerd Font | Arch Linux |
+| `ttf-ubuntu-mono-nerd` | Ubuntu Mono Nerd Font for GTK | Arch Linux |
 | `noto-fonts` | General fonts | Arch Linux |
 | `noto-fonts-emoji` | Emoji fonts | Arch Linux |
 | `adwaita-icon-theme` | Icon theme | Arch Linux |
