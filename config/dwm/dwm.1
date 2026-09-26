@@ -5,14 +5,13 @@ dwm \- dynamic window manager
 .B dwm
 .RB [ \-v ]
 .SH DESCRIPTION
-dwm is a dynamic window manager for X. It manages windows in tiling layouts, including Tatami and monocle. Each layout can be applied dynamically, optimising the
+dwm is a dynamic window manager for X. It manages windows in tiling layouts, including nrowgrid, grid, bottom stack, gapless grid, and horizontal grid. Each layout can be applied dynamically, optimising the
 environment for the application in use and the task performed.
 .P
-In tiled layouts windows are managed in a master and stacking area. The master
-area on the left contains one window by default, and the stacking area on the
-right contains all other windows. The number of master area windows can be
-adjusted from zero to an arbitrary number. In monocle layout all windows are
-maximised to the screen size. Dialog and fixed-size windows are tiled too.
+There are five layouts: four grids and bottom stack.
+The default layout is nrowgrid (###). Other layouts are grid (HHH), bottom
+stack (TTT), gapless grid (:::), and horizontal grid (---). Bottom stack places
+the master area above the stacking area. Dialog and fixed-size windows are tiled too.
 .P
 Windows are grouped by tags. Each window can be tagged with one or multiple
 tags. Selecting certain tags displays all windows with these tags.
@@ -43,93 +42,71 @@ label cycles through the tiling layouts.
 .TP
 .B Button3
 click on a tag label adds/removes all windows with that tag to/from the view.
+Click on the layout label to select the previous layout.
 .TP
-.B Mod1\-Button1
+.B Button4 / Button5
+Scroll up/down on the layout label to select the previous/next layout.
+.TP
+.B Super\-Button1
 click on a tag label applies that tag to the focused window.
 .TP
-.B Mod1\-Button3
+.B Super\-Button3
 click on a tag label adds/removes that tag to/from the focused window.
 .SS Keyboard commands
+Super refers to the Windows key (Mod4).
 .TP
-.B Mod1\-Shift\-Return
-Start
-.BR st(1).
+.B Super\-Return
+Open ST.
 .TP
-.B Mod1\-p
-Spawn
-.BR dmenu(1)
-for launching other programs.
+.B Super\-p
+Open Dmenu.
 .TP
-.B Mod1\-,
-Focus previous screen, if any.
+.B Super\-, / Super\-.
+Focus the previous/next monitor.
 .TP
-.B Mod1\-.
-Focus next screen, if any.
+.B Super\-Shift\-b
+Toggle the bar.
 .TP
-.B Mod1\-Shift\-,
-Send focused window to previous screen, if any.
+.B Super\-Shift\-t / y / m
+Select nrowgrid (###), grid (HHH), or bottom stack (TTT), respectively.
 .TP
-.B Mod1\-Shift\-.
-Send focused window to next screen, if any.
+.B Super\-[ / Super\-]
+Select the previous/next layout. Cycling order is ###, HHH, TTT, :::, ---, then wraps around.
 .TP
-.B Mod1\-b
-Toggles bar on and off.
+.B Super\-Left / Right
+Move focus; cross tags at window-list boundaries and monitors at tag boundaries.
 .TP
-.B Mod1\-t
-Sets tiled layout.
+.B Super\-Alt\-Left / Right
+Reorder the focused window; move it across tags and monitors at boundaries.
 .TP
-.B Mod1\-m
-Sets monocle layout.
+.B Super\-Shift\-Return
+Move the focused window to the first position in the tiled window list; if already first, promote the next window.
 .TP
-.B Mod1\-space
-Toggles between current and previous layout.
+.B Super\-x
+Close the focused window.
 .TP
-.B Mod1\-j
-Focus next window.
+.B Super\-Alt\-u
+Increase gaps.
 .TP
-.B Mod1\-k
-Focus previous window.
+.B Super\-Alt\-Shift\-u
+Decrease gaps.
 .TP
-.B Mod1\-i
-Increase number of windows in master area.
+.B Super\-Alt\-0
+Toggle gaps.
 .TP
-.B Mod1\-d
-Decrease number of windows in master area.
+.B Super\-[1..5]
+View the selected tag.
 .TP
-.B Mod1\-l
-Increase master area size.
+.B Super\-Shift\-[1..5]
+Move the focused window to the selected tag.
 .TP
-.B Mod1\-h
-Decrease master area size.
+.B Super\-Control\-[1..5]
+Add/remove the selected tag from the view.
 .TP
-.B Mod1\-Return
-Zooms/cycles focused window to/from master area (tiled layouts only).
+.B Super\-Control\-Shift\-[1..5]
+Add/remove the selected tag from the focused window.
 .TP
-.B Mod1\-Shift\-c
-Close focused window.
-.TP
-.B Mod1\-Tab
-Toggles to the previously selected tags.
-.TP
-.B Mod1\-Shift\-[1..n]
-Apply nth tag to focused window.
-.TP
-.B Mod1\-Shift\-0
-Apply all tags to focused window.
-.TP
-.B Mod1\-Control\-Shift\-[1..n]
-Add/remove nth tag to/from focused window.
-.TP
-.B Mod1\-[1..n]
-View all windows with nth tag.
-.TP
-.B Mod1\-0
-View all windows with any tag.
-.TP
-.B Mod1\-Control\-[1..n]
-Add/remove all windows with nth tag to/from the view.
-.TP
-.B Mod1\-Shift\-q
+.B Super\-Alt\-q
 Quit dwm.
 .SH CUSTOMIZATION
 dwm is customized by creating a custom config.h and (re)compiling the source

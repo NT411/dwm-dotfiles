@@ -12,7 +12,7 @@ all: dwm
 	${CC} -c ${CFLAGS} $<
 
 ${OBJ}: config.h config.mk
-dwm.o: vanitygaps.c tatami.c
+dwm.o: vanitygaps.c
 
 config.h:
 	cp config.def.h $@
@@ -26,7 +26,7 @@ clean:
 dist: clean
 	mkdir -p dwm-${VERSION}
 	cp -R LICENSE Makefile config.def.h config.mk\
-		dwm.1 drw.h util.h ${SRC} vanitygaps.c tatami.c transient.c dwm-${VERSION}
+		dwm.1 drw.h util.h ${SRC} vanitygaps.c transient.c dwm-${VERSION}
 	@if [ -f README ]; then cp README dwm-${VERSION}/README; elif [ -f ../../docs/Readmes/dwm/README ]; then cp ../../docs/Readmes/dwm/README dwm-${VERSION}/README; fi
 	tar -cf dwm-${VERSION}.tar dwm-${VERSION}
 	gzip dwm-${VERSION}.tar

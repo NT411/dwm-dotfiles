@@ -44,23 +44,14 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 
 #define FORCE_VSPLIT 1  /* nrowgrid layout: force two clients to always split vertically */
 #include "vanitygaps.c"
-#include "tatami.c"
 
 static const Layout layouts[] = {
 	/* symbol     arrange function */
-	{ "[]=",      tile },    /* first entry is default */
-	{ "|+|",      tatami },
-	{ "[M]",      monocle },
-	{ "[@]",      spiral },
-	{ "[\\]",     dwindle },
-	{ "H[]",      deck },
-	{ "TTT",      bstack },
-	{ "===",      bstackhoriz },
+	{ "###",      nrowgrid }, /* first entry is default */
 	{ "HHH",      grid },
-	{ "###",      nrowgrid },
-	{ "---",      horizgrid },
+	{ "TTT",      bstack },
 	{ ":::",      gaplessgrid },
-	{ "|M|",      centeredmaster },
+	{ "---",      horizgrid },
 	{ NULL,       NULL },
 };
 
@@ -105,9 +96,9 @@ static const Key keys[] = {
 	/* layouts */
     { MODKEY,                       XK_bracketright, cyclelayout, {.i = +1} },
     { MODKEY,                       XK_bracketleft,  cyclelayout, {.i = -1} },
-    { MODKEY|ShiftMask,             XK_t,            setlayout, {.v = &layouts[0]} },   // tatami
-    { MODKEY|ShiftMask,             XK_y,            setlayout, {.v = &layouts[1]} },   // tile
-    { MODKEY|ShiftMask,             XK_m,            setlayout, {.v = &layouts[2]} },   // monocle
+    { MODKEY|ShiftMask,             XK_t,            setlayout, {.v = &layouts[0]} },   // nrowgrid
+    { MODKEY|ShiftMask,             XK_y,            setlayout, {.v = &layouts[1]} },   // grid
+    { MODKEY|ShiftMask,             XK_m,            setlayout, {.v = &layouts[2]} },   // bstack
 
 
 	/* actions */

@@ -1,6 +1,11 @@
 # DWM
 
-The X11 window manager for this desktop. This build uses five tags, a top bar, configurable gaps, and Tatami as the default layout. Other layouts include tile, monocle, spiral, deck, and grids.
+The X11 window manager for this desktop. This build uses five tags, a top bar, configurable gaps, and `###` (nrowgrid) as the default layout. The other layouts are `HHH` (grid), `TTT` (bottom stack), `:::` (gapless grid), and `---` (horizontal grid).
+
+There are five layouts total: four grids and bottom stack. Cycling follows
+`###` → `HHH` → `TTT` → `:::` → `---`, then wraps around. Click the layout
+symbol with the left mouse button or scroll down to advance; right-click or
+scroll up to go back. All five layouts support the configured gaps.
 
 ## Configuration
 
@@ -24,6 +29,7 @@ After using the [installer](../installer/README.md), run `startx` from a TTY or 
 | Super + Left / Right | Move focus; cross tags at window-list boundaries and monitors at tag boundaries |
 | Super + Alt + Left / Right | Reorder the focused window; move it across tags and monitors at boundaries |
 | Super + [ / ] | Cycle layouts |
+| Super + Shift + T / Y / M | Select nrowgrid / grid / bottom stack |
 | Super + Alt + U | Increase gaps |
 | Super + Alt + Shift + U | Decrease gaps |
 | Super + Alt + 0 | Toggle gaps |

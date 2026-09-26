@@ -247,6 +247,10 @@ See the [qutebrowser keybindings](docs/Readmes/qutebrowser/README.md#keybindings
 
 **Super** refers to the Windows key.
 
+DWM has five layouts: four grids and bottom stack. The default is `###`
+(nrowgrid), followed in cycling order by `HHH` (grid), `TTT` (bottom stack),
+`:::` (gapless grid), and `---` (horizontal grid).
+
 | Key | Action |
 |:----|:-------|
 | Super + Enter | Open terminal |
@@ -263,6 +267,7 @@ See the [qutebrowser keybindings](docs/Readmes/qutebrowser/README.md#keybindings
 | Super + Alt + Left/Right | Reorder the focused window; move it across tags and monitors at boundaries |
 | Super + `]` | Next layout |
 | Super + `[` | Previous layout |
+| Super + Shift + T / Y / M | Select `###` / `HHH` / `TTT` |
 | Super + Shift + B | Toggle the status bar |
 | Super + Alt + Q | Quit DWM |
 | Volume Up/Down media keys | Adjust default PipeWire output volume by 5%; Fn may be needed depending on the keyboard |
