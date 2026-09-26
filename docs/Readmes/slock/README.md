@@ -4,7 +4,7 @@ The X11 screen locker opened with **Super + L** in DWM. You can also run `slock`
 
 ## Configuration
 
-[config.h](../../../config/slock/config.h) controls the initial, typing, and failure colors; the unlock message and text appearance; and the lock window opacity, currently `0.5`. The configured privilege-drop user and group are both `nobody`.
+[config.h](../../../config/slock/config.h) controls the initial, typing, and failure colors and the lock window opacity, currently `0.5`. The lock screen displays no message and does not load a text font. The configured privilege-drop user and group are both `nobody`.
 
 This fork uses a translucent lock window; compositing and blur depend on the active Picom configuration. See [the Picom configuration](../../../config/picom/picom.conf).
 
